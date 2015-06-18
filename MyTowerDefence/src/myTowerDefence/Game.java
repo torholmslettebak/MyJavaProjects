@@ -3,7 +3,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.Sys;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
- 
+import static org.lwjgl.opengl.GL11.*;
 import input.KeyboardHandler;
 import input.MouseHandler;
 import input.MouseClickHandler;
@@ -60,6 +60,7 @@ public class Game implements Runnable
 		// the window. The last 2 NULL parameters are for more advanced uses and you
 		// shouldn't worry about them right now.
 		window = glfwCreateWindow(width, height, "Endless Runner", NULL, NULL);
+		GLContext.createFromCurrent();
 		double xpos, ypos;
 		// This code performs the appropriate checks to ensure that the
 		// window was successfully created. 
@@ -83,6 +84,14 @@ public class Game implements Runnable
 		glfwMakeContextCurrent(window);
 		// finally shows our created window in all it's glory.
 		glfwShowWindow(window);
+		
+//		glMatrixMode(GL_PROJECTION);
+//		glLoadIdentity(); // Resets any previous projection matrices
+//		glOrtho(0, 640, 480, 0, 1, -1);
+//		glMatrixMode(GL_MODELVIEW);
+//		glClear(GL_COLOR_BUFFER_BIT);
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
 	}
 	
 	public void update(){
@@ -109,6 +118,8 @@ public class Game implements Runnable
 			if (stateLeft == GLFW_PRESS)
 			{
 				glfwGetCursorPos(window, x, y);
+//				glBegin(GL_LINES);
+//				glVertex2f((float) x.get(),(float) y.get());
 				System.out.println("Mouse button left was pressed " + x.get() + " " + y.get());
 				
 			}
