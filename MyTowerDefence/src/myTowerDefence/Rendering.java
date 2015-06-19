@@ -1,6 +1,13 @@
 package myTowerDefence;
-import static org.lwjgl.opengl.GL21.*;
+
+import org.lwjgl.opengl.GL11.*;
 public class Rendering 
 {
+	
+	public Rendering(Map map, long window) 
+	{
+		
+	}
 
+	
 }
